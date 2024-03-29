@@ -45,7 +45,7 @@ func (e *Entry) defaultMeta(pos uint32, version uint32, operationType uint8) {
 	}
 }
 
-func newEntry(key, value string, pos, version uint32,operationType uint8) *Entry {
+func NewEntry(key, value string, pos, version uint32,operationType uint8) *Entry {
 	entry := &Entry{
 		key:   key,
 		value: value,
@@ -54,6 +54,8 @@ func newEntry(key, value string, pos, version uint32,operationType uint8) *Entry
 	entry.defaultMeta(pos, version, operationType)
 	return entry
 }
+
+
 
 func (e *Entry) setTTL(ttl uint32)  {
 	e.meta.expireDate = time.Now().Unix() + int64(ttl)
